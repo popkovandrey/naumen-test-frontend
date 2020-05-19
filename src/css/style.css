@@ -1,0 +1,21 @@
+body {
+	background-color: white;
+}
+
+.container {
+    text-align: left;
+}
+
+.center-logo {
+    text-align: center;
+    padding-top: 50px;  
+}
+
+.info {
+    color: darkgreen;
+    font-size: 10px;  
+}
+
+img {
+    size: 50%;
+}

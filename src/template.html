@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid bg-light">
+        <div class="container">
+          <p class="center-logo">
+            <select id=selectLang>
+              <option value="ru">Ru</option>
+              <option value="en">En</option>
+            </select>
+            
+            <a href="https://ru.wikipedia.org/wiki/Main_Page">
+              <img src="http://findicons.com/files/icons/111/popular_sites/128/wikipedia_globe_icon.png">
+            </a>
+            <h1>Discover something new:</h1>
+          </p>	
+          <form id="form">
+            <div class="form-group">
+              <input id="text_search" class="form-control" type="text" placeholder="Enter here">
+              <div id="err_div" class="invalid-feedback" ></div>
+            </div>
+            <div class="form-group">
+              <table>
+                <tr valign="top">
+                  <td>
+                    <button id="btn_submit" type="submit" class="btn btn-outline-primary btn-lg">Add channel</button>
+                  </td>
+                  <td>
+                    <div id="div_alert" class="alert alert-danger" role="alert" hidden></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <p>
+              <select id="select_count_res">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+              </select>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div id="res_find" class="col-sm">
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
