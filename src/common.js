@@ -1,7 +1,10 @@
 const decOfNum = (number, titles) => {
   const cases = [2, 0, 1, 1, 1, 2];
 
-  return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+  return titles[
+    (number % 100 > 4 && number % 100 < 20)
+      ? 2
+      : cases[(number % 10 < 5) ? number % 10 : 5]];
 };
 
 const countWords = (num, texts) => `${num} ${decOfNum(num, [
@@ -27,12 +30,10 @@ const countBytes = (num, texts) => {
 };
 
 const translate = (texts) => {
-  // const slogan = document.getElementById('slogan');
   const input = document.getElementById('text_search');
   const btnSubmit = document.getElementById('btn_submit');
   const countRes = document.getElementById('count_res');
 
-  // slogan.textContent = texts('slogan');
   btnSubmit.textContent = texts('btnFindCaption');
   input.attributes.placeholder.value = texts('placeholder');
   countRes.textContent = texts('countRes');

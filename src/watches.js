@@ -8,7 +8,7 @@ const setWatches = (state, texts) => {
   const input = document.getElementById('text_search');
   const submit = document.getElementById('btn_submit');
   // const errorDiv = document.getElementById('err_div');
-  // const divAlert = document.getElementById('div_alert');
+  const divAlert = document.getElementById('div_alert');
   const spinner = document.getElementById('spinner');
   const divResults = document.getElementById('res_find');
 
@@ -39,6 +39,15 @@ const setWatches = (state, texts) => {
         break;
       default:
         throw new Error(`Unknown processState form: ${processState}!`);
+    }
+  });
+
+  watch(find, 'statusRequest', () => {
+    if (find.statusRequest.status === 'bad') {
+      divAlert.textContent = find.statusRequest.message;
+      divAlert.removeAttribute('hidden');
+
+      setTimeout(() => divAlert.setAttribute('hidden', ''), 5000);
     }
   });
 

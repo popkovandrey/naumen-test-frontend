@@ -1,25 +1,10 @@
-body {
-	background-color: white;
-}
-
 .container {
     text-align: left;
-}
-
-p.select_lang {
-   text-align: right; 
-}
-
-.center-logo {
-    text-align: center;
-    padding-top: 0px;  
+    padding-top: 20px;
+    
 }
 
 .info {
     color: darkgreen;
     font-size: 10px;  
-}
-
-img {
-    size: 50%;
 }

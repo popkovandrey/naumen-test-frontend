@@ -10,7 +10,7 @@ const proxy = 'https://cors-anywhere.herokuapp.com';
 
 const search = (url, text, countRes, state) => {
   const { form, find } = state;
-  // console.log(state);
+
   axios.get(url, {
     params: {
       action: 'query',
@@ -22,14 +22,13 @@ const search = (url, text, countRes, state) => {
   })
     .then((response) => {
       form.processState = 'finished';
-      // console.log(response.data);
+      find.statusRequest = { status: 'success', message: '' };
       find.totalHits = _.get(response.data, 'query.searchinfo.totalhits');
       find.links = _.get(response.data, 'query.search');
-      // console.log(state);
     })
     .catch((err) => {
       form.processState = 'filling';
-
+      find.statusRequest = { status: 'bad', message: err.message };
       console.log(err);
     });
 };
@@ -43,11 +42,9 @@ const app = () => {
       errors: [],
     },
     find: {
-      // urlAPI: 'https://ru.wikipedia.org/w/api.php',
-      // urlWiki: 'https://ru.wikipedia.org/wiki',
       links: [],
       totalHits: 0,
-      errors: [],
+      statusRequest: {},
     },
   };
 
