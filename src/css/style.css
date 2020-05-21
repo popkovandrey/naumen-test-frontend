@@ -6,9 +6,13 @@ body {
     text-align: left;
 }
 
+p.select_lang {
+   text-align: right; 
+}
+
 .center-logo {
     text-align: center;
-    padding-top: 50px;  
+    padding-top: 0px;  
 }
 
 .info {

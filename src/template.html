@@ -5,29 +5,26 @@
     <title></title>
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid bg-light">
         <div class="container">
-          <p class="center-logo">
-            <select id=selectLang>
-              <option value="ru">Ru</option>
-              <option value="en">En</option>
-            </select>
-            
-            <a href="https://ru.wikipedia.org/wiki/Main_Page">
-              <img src="http://findicons.com/files/icons/111/popular_sites/128/wikipedia_globe_icon.png">
-            </a>
-            <h1>Discover something new:</h1>
+          <p id="select_lang">
+          <select id="select_lang">
+            <option value="ru" selected>Ru</option>
+            <option value="en">En</option>
+          </select>
           </p>	
           <form id="form">
             <div class="form-group">
-              <input id="text_search" class="form-control" type="text" placeholder="Enter here">
+              <input id="text_search" class="form-control" type="text" placeholder="">
               <div id="err_div" class="invalid-feedback" ></div>
             </div>
             <div class="form-group">
               <table>
                 <tr valign="top">
                   <td>
-                    <button id="btn_submit" type="submit" class="btn btn-outline-primary btn-lg">Add channel</button>
+                    <button id="btn_submit" type="submit" class="btn btn-outline-primary btn-lg">...</button>
+                    <div id="spinner" class="spinner-border spinner-border-sm" role="status" hidden>
+                      <span class="sr-only">Loading...</span>
+                    </div>
                   </td>
                   <td>
                     <div id="div_alert" class="alert alert-danger" role="alert" hidden></div>
@@ -36,6 +33,7 @@
               </table>
             </div>
             <p>
+              <span id="count_res">...</span> 
               <select id="select_count_res">
                 <option value="5">5</option>
                 <option value="10" selected>10</option>
@@ -44,7 +42,6 @@
               </select>
             </p>
           </form>
-        </div>
       </div>
       <div class="container">
         <div class="row">

@@ -9,25 +9,30 @@ const setWatches = (state, texts) => {
   const submit = document.getElementById('btn_submit');
   // const errorDiv = document.getElementById('err_div');
   // const divAlert = document.getElementById('div_alert');
+  const spinner = document.getElementById('spinner');
   const divResults = document.getElementById('res_find');
 
 
   watch(form, 'processState', () => {
     const { processState } = form;
+    const btnFindCaption = texts('btnFindCaption');
 
     switch (processState) {
       case 'sending':
         submit.textContent = '...';
+        spinner.removeAttribute('hidden');
         submit.disabled = true;
         input.disabled = true;
         break;
       case 'filling':
-        submit.textContent = 'Find';
+        spinner.setAttribute('hidden', '');
+        submit.textContent = btnFindCaption;
         submit.disabled = false;
         input.disabled = false;
         break;
       case 'finished':
-        submit.textContent = 'Find';
+        spinner.setAttribute('hidden', '');
+        submit.textContent = btnFindCaption;
         input.value = '';
         submit.disabled = true;
         input.disabled = false;
@@ -39,9 +44,10 @@ const setWatches = (state, texts) => {
 
   watch(find, 'links', () => {
     const { links, totalHits } = find;
-    const { textSearch, countRes } = form;
+    const { textSearch } = form;
 
-    divResults.innerHTML = '';
+    divResults.innerHTML = `<p>${texts('resultFind')} "${textSearch}"<br>
+      <small>${texts('totalHits')} ${totalHits}</small></p>`;
 
     if (_.isEqual(links, [])) return;
 
@@ -50,15 +56,13 @@ const setWatches = (state, texts) => {
     links.forEach((item) => {
       strItems = `${strItems}
       <p>
-          <a href="${item.link}" target="_blank">${item.title}</a><br>
+          <a href="${texts('urlWiki')}/${item.title}" target="_blank">${item.title}</a><br>
           <small>${item.snippet}...</small><br>
-          <span class="info">${countBytes(item.size)} (${countWords(item.wordcount)}) - ${format(new Date(item.timestamp), 'HH:mm, dd.MM.yyyy')}</span>
+          <span class="info">${countBytes(item.size, texts)} (${countWords(item.wordcount, texts)}) - ${format(new Date(item.timestamp), 'HH:mm, dd.MM.yyyy')}</span>
       </p>`;
     });
 
-    divResults.innerHTML = `<p>Результат поиска "${textSearch}"<br>
-      <small>(1-${countRes} из ${totalHits})</small></p>
-      ${strItems}`;
+    divResults.innerHTML += strItems;
   });
 };
 
