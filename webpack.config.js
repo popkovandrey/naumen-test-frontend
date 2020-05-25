@@ -9,7 +9,9 @@ module.exports = {
 
   entry: {
     index: './src/index.js',
-    css: './src/css/style.css',
+    // css: './src/css/style.css',
+    // ligth: './src/css/ligth.css',
+    // dark: './src/css/dark.css',
     bootstrap: './src/bootstrap.js',
   },
 

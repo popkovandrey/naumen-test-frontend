@@ -42,6 +42,17 @@ const setWatches = (state, texts) => {
     }
   });
 
+  watch(form, 'theme', () => {
+    console.log(form.theme);
+    if (form.theme === 'light') {
+      document.styleSheets[1].disabled = true;
+      document.styleSheets[2].disabled = false;
+    } else {
+      document.styleSheets[1].disabled = false;
+      document.styleSheets[2].disabled = true;
+    }
+  });
+
   watch(find, 'statusRequest', () => {
     if (find.statusRequest.status === 'bad') {
       divAlert.textContent = find.statusRequest.message;

@@ -4,6 +4,9 @@ import axios from 'axios';
 import setWatches from './watches';
 import resources from './locales';
 import { translate } from './common';
+import './css/style.css';
+import './css/dark.css';
+import './css/light.css';
 
 
 const proxy = 'https://cors-anywhere.herokuapp.com';
@@ -39,6 +42,7 @@ const app = () => {
       processState: 'filling',
       textSearch: '',
       countRes: 10,
+      theme: 'light',
       errors: [],
     },
     find: {
@@ -52,6 +56,7 @@ const app = () => {
   const input = document.getElementById('text_search');
   const selectCountRes = document.getElementById('select_count_res');
   const selectLang = document.getElementById('select_lang');
+  const selectTheme = document.getElementById('select_theme');
 
   input.addEventListener('input', (evt) => {
     state.form.processState = 'filling';
@@ -66,7 +71,7 @@ const app = () => {
     if (textSearch === '') return;
 
     state.form.processState = 'sending';
-    // console.log(i18next.t('urlAPI'), i18next.t('urlWiki'));
+
     search(`${proxy}/${i18next.t('urlAPI')}`, textSearch, 10, state);
   });
 
@@ -77,6 +82,10 @@ const app = () => {
   selectLang.addEventListener('change', (evt) => {
     i18next.changeLanguage(evt.target.value)
       .then(translate);
+  });
+
+  selectTheme.addEventListener('change', (evt) => {
+    state.form.theme = evt.target.value;
   });
 
   i18next.init(
