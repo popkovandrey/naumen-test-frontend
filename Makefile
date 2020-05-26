@@ -10,3 +10,6 @@ develop:
 build:
 	rm -rf dist
 	NODE_ENV=production npx webpack
+
+start:
+	heroku local -f Procfile.dev
