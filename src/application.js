@@ -3,7 +3,7 @@ import i18next from 'i18next';
 import axios from 'axios';
 import setWatches from './watches';
 import resources from './locales';
-import { translate } from './common';
+import { translate, getCookie } from './common';
 import './css/style.css';
 import './css/dark.css';
 import './css/light.css';
@@ -43,6 +43,7 @@ const app = () => {
       textSearch: '',
       countRes: 10,
       theme: 'light',
+      lang: 'ru',
       errors: [],
     },
     find: {
@@ -80,12 +81,16 @@ const app = () => {
   });
 
   selectLang.addEventListener('change', (evt) => {
-    i18next.changeLanguage(evt.target.value)
-      .then(translate);
+    state.form.lang = evt.target.value;
   });
 
   selectTheme.addEventListener('change', (evt) => {
     state.form.theme = evt.target.value;
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    state.form.theme = getCookie('theme', 'light');
+    state.form.lang = getCookie('lang', 'ru');
   });
 
   i18next.init(

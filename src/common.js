@@ -39,4 +39,16 @@ const translate = (texts) => {
   countRes.textContent = texts('countRes');
 };
 
-export { countWords, countBytes, translate };
+const getCookie = (name, def = 'default') => {
+  const matches = document.cookie.match(new RegExp(
+    `(?:^|; )${name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1')}=([^;]*)`,
+  ));
+  return matches ? decodeURIComponent(matches[1]) : def;
+};
+
+export {
+  countWords,
+  countBytes,
+  translate,
+  getCookie,
+};

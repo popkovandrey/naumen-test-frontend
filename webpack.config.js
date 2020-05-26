@@ -9,14 +9,12 @@ module.exports = {
 
   entry: {
     index: './src/index.js',
-    // css: './src/css/style.css',
-    // ligth: './src/css/ligth.css',
-    // dark: './src/css/dark.css',
     bootstrap: './src/bootstrap.js',
   },
 
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: '[name].build.js',
   },
 
@@ -40,6 +38,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        use: {
+          loader: 'file-loader?name=[name].[ext]',
+        },
       },
     ],
   },

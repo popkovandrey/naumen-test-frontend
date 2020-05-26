@@ -1,16 +1,18 @@
 import { watch } from 'melanke-watchjs';
 import _ from 'lodash';
+import i18next from 'i18next';
 import { format } from 'date-fns';
-import { countWords, countBytes } from './common';
+import { translate, countWords, countBytes } from './common';
 
 const setWatches = (state, texts) => {
   const { find, form } = state;
   const input = document.getElementById('text_search');
   const submit = document.getElementById('btn_submit');
-  // const errorDiv = document.getElementById('err_div');
   const divAlert = document.getElementById('div_alert');
   const spinner = document.getElementById('spinner');
   const divResults = document.getElementById('res_find');
+  const darkTheme = document.getElementById('dark_theme');
+  const lightTheme = document.getElementById('light_theme');
 
 
   watch(form, 'processState', () => {
@@ -43,14 +45,29 @@ const setWatches = (state, texts) => {
   });
 
   watch(form, 'theme', () => {
-    console.log(form.theme);
     if (form.theme === 'light') {
+      document.cookie = 'theme=light';
       document.styleSheets[1].disabled = true;
       document.styleSheets[2].disabled = false;
+      lightTheme.setAttribute('selected', '');
     } else {
+      document.cookie = 'theme=dark';
       document.styleSheets[1].disabled = false;
       document.styleSheets[2].disabled = true;
+      darkTheme.setAttribute('selected', '');
     }
+  });
+
+  watch(form, 'lang', () => {
+    i18next.changeLanguage(form.lang)
+      .then((t) => {
+        translate(t);
+        document.cookie = `lang=${form.lang}`;
+        const lang = document.getElementById(`${form.lang}_lang`);
+        if (lang) {
+          lang.setAttribute('selected', '');
+        }
+      });
   });
 
   watch(find, 'statusRequest', () => {
