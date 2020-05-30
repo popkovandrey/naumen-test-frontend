@@ -46,16 +46,13 @@ const setWatches = (state, texts) => {
 
   watch(form, 'theme', () => {
     if (form.theme === 'light') {
-      document.cookie = 'theme=light';
-      document.styleSheets[1].disabled = true;
-      document.styleSheets[2].disabled = false;
       lightTheme.setAttribute('selected', '');
     } else {
-      document.cookie = 'theme=dark';
-      document.styleSheets[1].disabled = false;
-      document.styleSheets[2].disabled = true;
       darkTheme.setAttribute('selected', '');
     }
+    document.styleSheets[1].disabled = form.theme === 'light';
+    document.styleSheets[2].disabled = form.theme === 'dark';
+    document.cookie = `theme=${form.theme}`;
   });
 
   watch(form, 'lang', () => {
