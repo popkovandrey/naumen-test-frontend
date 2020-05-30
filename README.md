@@ -1,5 +1,7 @@
 # naumen-test-frontend
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/e31bf6ff9c493617808f/maintainability)](https://codeclimate.com/github/popkovandrey/naumen-test-frontend/maintainability)
+
 Тестовое задание для стажировки в компании Naumen. Поиск в Википедии (Wikipedia Api).
 
 [Preview is here](https://frozen-beyond-18925.herokuapp.com/)
