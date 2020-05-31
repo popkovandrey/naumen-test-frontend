@@ -7,6 +7,7 @@ import { translate, getCookie } from './common';
 import './css/style.css';
 import './css/dark.css';
 import './css/light.css';
+import './img/screenbrightness.ico';
 
 
 const proxy = 'https://cors-anywhere.herokuapp.com';
@@ -57,7 +58,7 @@ const app = () => {
   const input = document.getElementById('text_search');
   const selectCountRes = document.getElementById('select_count_res');
   const selectLang = document.getElementById('select_lang');
-  const selectTheme = document.getElementById('select_theme');
+  const imgTheme = document.getElementById('img_theme');
 
   input.addEventListener('input', (evt) => {
     state.form.processState = 'filling';
@@ -84,13 +85,13 @@ const app = () => {
     state.form.lang = evt.target.value;
   });
 
-  selectTheme.addEventListener('change', (evt) => {
-    state.form.theme = evt.target.value;
-  });
-
   document.addEventListener('DOMContentLoaded', () => {
     state.form.theme = getCookie('theme', 'light');
     state.form.lang = getCookie('lang', 'ru');
+  });
+
+  imgTheme.addEventListener('click', () => {
+    state.form.theme = state.form.theme === 'light' ? 'dark' : 'light';
   });
 
   i18next.init(

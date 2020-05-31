@@ -33,10 +33,12 @@ const translate = (texts) => {
   const input = document.getElementById('text_search');
   const btnSubmit = document.getElementById('btn_submit');
   const countRes = document.getElementById('count_res');
+  const imgTheme = document.getElementById('img_theme');
 
   btnSubmit.textContent = texts('btnFindCaption');
   input.attributes.placeholder.value = texts('placeholder');
   countRes.textContent = texts('countRes');
+  imgTheme.attributes.title.value = texts('titleImgChangeTheme');
 };
 
 const getCookie = (name, def = 'default') => {

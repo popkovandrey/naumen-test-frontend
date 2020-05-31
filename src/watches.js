@@ -11,9 +11,6 @@ const setWatches = (state, texts) => {
   const divAlert = document.getElementById('div_alert');
   const spinner = document.getElementById('spinner');
   const divResults = document.getElementById('res_find');
-  const darkTheme = document.getElementById('dark_theme');
-  const lightTheme = document.getElementById('light_theme');
-
 
   watch(form, 'processState', () => {
     const { processState } = form;
@@ -45,11 +42,6 @@ const setWatches = (state, texts) => {
   });
 
   watch(form, 'theme', () => {
-    if (form.theme === 'light') {
-      lightTheme.setAttribute('selected', '');
-    } else {
-      darkTheme.setAttribute('selected', '');
-    }
     document.styleSheets[1].disabled = form.theme === 'light';
     document.styleSheets[2].disabled = form.theme === 'dark';
     document.cookie = `theme=${form.theme}`;

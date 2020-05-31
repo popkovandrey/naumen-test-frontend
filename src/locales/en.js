@@ -6,6 +6,7 @@ export default {
     btnFindCaption: 'Search',
     slogan: 'Discover something new:',
     placeholder: 'Enter here',
+    titleImgChangeTheme: 'change theme',
     sizeFile: {
       MB: 'MB',
       KB: 'KB',

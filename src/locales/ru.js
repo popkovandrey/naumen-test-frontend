@@ -6,6 +6,7 @@ export default {
     btnFindCaption: 'Найти',
     slogan: 'Откройте для себя что-то новое:',
     placeholder: 'Ввести здесь',
+    titleImgChangeTheme: 'сменить тему',
     sizeFile: {
       MB: 'Мб',
       KB: 'Кб',

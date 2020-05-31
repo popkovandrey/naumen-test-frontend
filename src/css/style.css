@@ -7,3 +7,8 @@
     color: darkgreen;
     font-size: 10px;  
 }
+
+.img-change-theme {
+    cursor: pointer;
+    align: right;
+}
